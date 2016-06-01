@@ -27,10 +27,9 @@
 *.out
 *.app
 
+
+
 *.caffemodel
-
 build/
-
 imgs/
-
 .DS_Store
