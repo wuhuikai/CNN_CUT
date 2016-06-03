@@ -140,7 +140,7 @@ int main(int argc, char* argv[])
 	MyGMM bgdGMM(bgd), fgdGMM(fgd);
 	Mat compIdxs( TheImage.size(), CV_32SC1 );
 	MyinitGMMs( TheImage, mask, bgdGMM, fgdGMM );
-	for ( int i = 0; i < 1; i++ )
+	for ( int i = 0; i < 3; i++ )
 	{
 		GCGraph<double> graph;
 		MyassignGMMsComponents( TheImage, mask, bgdGMM, fgdGMM, compIdxs );
@@ -152,8 +152,9 @@ int main(int argc, char* argv[])
 	Mat foreground(TheImage.size(), CV_8UC3, Scalar(255, 255, 255));//BGR
 	compare(mask, cv::GC_PR_FGD, mask, CMP_EQ);
 	TheImage.copyTo(foreground, mask);
-	imshow("【结果】" , foreground);
-	waitKey(0);
+	// imshow("【结果】" , foreground);
+	imwrite("result.jpg", foreground);
+	// waitKey(0);
 
 	return 0;
 }

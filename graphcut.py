@@ -60,12 +60,27 @@ if __name__ == '__main__':
 	init()
 
 	while True:
-		IMAGE_PATH = raw_input("Input image path:")
-		if IMAGE_PATH == 'Q':
+		NAME = raw_input("Input image path:")
+		if NAME == 'Q':
 			break
-		IMAGE_PATH = 'imgs/' + IMAGE_PATH
+		IMAGE_PATH = 'imgs/' + NAME
 		image = caffe.io.load_image(IMAGE_PATH)
 		hotmap(image)
 		print 'Hot map generated!'
 
 		call(["./GraphCut/build/GraphCut", IMAGE_PATH, 'hotmap'])
+	# 	call(["mv", 'result.jpg', 'results/'+NAME])
+	# 	call(["mv", 'hotmap.jpg', 'hotmaps/'+NAME])
+
+	# from os import listdir
+	# from os.path import isfile, join
+	# files = [f for f in listdir('imgs') if isfile(join('imgs', f)) and not f.startswith('.')]
+	# for NAME in files:
+	# 	IMAGE_PATH = 'imgs/' + NAME
+	# 	image = caffe.io.load_image(IMAGE_PATH)
+	# 	hotmap(image)
+	# 	print 'Hot map generated!'
+
+	# 	call(["./GraphCut/build/GraphCut", IMAGE_PATH, 'hotmap'])
+	# 	call(["mv", 'result.jpg', 'results/'+NAME])
+	# 	call(["mv", 'hotmap.jpg', 'hotmaps/'+NAME])

@@ -35,3 +35,5 @@ imgs/
 .DS_Store
 hotmap*
 *.jpg
+Paper/
+results*
